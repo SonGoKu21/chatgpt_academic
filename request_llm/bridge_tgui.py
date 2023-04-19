@@ -12,7 +12,11 @@ import logging
 import time
 import threading
 import importlib
+<<<<<<< HEAD
 from toolbox import get_conf
+=======
+from toolbox import get_conf, update_ui
+>>>>>>> faffc59f517fc0906b43346324521b016a9affd4
 LLM_MODEL, = get_conf('LLM_MODEL')
 
 # "TGUI:galactica-1.3b@localhost:7860"
@@ -90,7 +94,11 @@ async def run(context, max_token=512):
 
 
 
+<<<<<<< HEAD
 def predict_tgui(inputs, top_p, temperature, chatbot=[], history=[], system_prompt='', stream = True, additional_fn=None):
+=======
+def predict_tgui(inputs, top_p, temperature, chatbot, history=[], system_prompt='', stream = True, additional_fn=None):
+>>>>>>> faffc59f517fc0906b43346324521b016a9affd4
     """
         发送至chatGPT，流式获取输出。
         用于基础的对话功能。
@@ -101,17 +109,29 @@ def predict_tgui(inputs, top_p, temperature, chatbot=[], history=[], system_prom
         additional_fn代表点击的哪个按钮，按钮见functional.py
     """
     if additional_fn is not None:
+<<<<<<< HEAD
         import functional
         importlib.reload(functional)    # 热更新prompt
         functional = functional.get_functionals()
         if "PreProcess" in functional[additional_fn]: inputs = functional[additional_fn]["PreProcess"](inputs)  # 获取预处理函数（如果有的话）
         inputs = functional[additional_fn]["Prefix"] + inputs + functional[additional_fn]["Suffix"]
+=======
+        import core_functional
+        importlib.reload(core_functional)    # 热更新prompt
+        core_functional = core_functional.get_core_functions()
+        if "PreProcess" in core_functional[additional_fn]: inputs = core_functional[additional_fn]["PreProcess"](inputs)  # 获取预处理函数（如果有的话）
+        inputs = core_functional[additional_fn]["Prefix"] + inputs + core_functional[additional_fn]["Suffix"]
+>>>>>>> faffc59f517fc0906b43346324521b016a9affd4
 
     raw_input = "What I would like to say is the following: " + inputs
     logging.info(f'[raw_input] {raw_input}')
     history.extend([inputs, ""])
     chatbot.append([inputs, ""])
+<<<<<<< HEAD
     yield chatbot, history, "等待响应"
+=======
+    yield from update_ui(chatbot=chatbot, history=history, msg="等待响应") # 刷新界面
+>>>>>>> faffc59f517fc0906b43346324521b016a9affd4
 
     prompt = inputs
     tgui_say = ""
@@ -138,7 +158,11 @@ def predict_tgui(inputs, top_p, temperature, chatbot=[], history=[], system_prom
             tgui_say = mutable[0]
             history[-1] = tgui_say
             chatbot[-1] = (history[-2], history[-1])
+<<<<<<< HEAD
             yield chatbot, history, "status_text"
+=======
+            yield from update_ui(chatbot=chatbot, history=history) # 刷新界面
+>>>>>>> faffc59f517fc0906b43346324521b016a9affd4
 
     logging.info(f'[response] {tgui_say}')
 

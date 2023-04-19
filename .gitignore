@@ -55,6 +55,7 @@ coverage.xml
 *.pot
 github
 .github
+.idea/
 TEMP
 TRASH
 
@@ -132,6 +133,10 @@ dmypy.json
 .pyre/
 
 .vscode
+<<<<<<< HEAD
+=======
+.idea
+>>>>>>> faffc59f517fc0906b43346324521b016a9affd4
 
 history
 ssr_conf
@@ -139,4 +144,10 @@ config_private.py
 gpt_log
 private.md
 private_upload
+<<<<<<< HEAD
 other_llms
+=======
+other_llms
+cradle*
+debug*
+>>>>>>> faffc59f517fc0906b43346324521b016a9affd4

@@ -1,5 +1,25 @@
+<<<<<<< HEAD
 gradio>=3.23
+=======
+gradio==3.25.0
+tiktoken>=0.3.3
+>>>>>>> faffc59f517fc0906b43346324521b016a9affd4
 requests[socks]
+transformers
+python-markdown-math
+beautifulsoup4
+latex2mathml
+python-docx
 mdtex2html
+<<<<<<< HEAD
 Markdown
 latex2mathml
+=======
+colorama
+Markdown
+pygments
+pymupdf
+openai
+numpy
+arxiv
+>>>>>>> faffc59f517fc0906b43346324521b016a9affd4
